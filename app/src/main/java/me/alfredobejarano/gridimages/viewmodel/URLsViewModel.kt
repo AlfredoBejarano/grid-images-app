@@ -5,7 +5,6 @@ import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.MutableLiveData
 import me.alfredobejarano.gridimages.repository.URLsRepository
 import javax.inject.Inject
-import kotlin.concurrent.thread
 
 /**
  * Simple [AndroidViewModel] class that connects the UI
@@ -35,13 +34,10 @@ class URLsViewModel @Inject constructor(
     fun retrievePictures() {
         // Report to the UI that the ViewModel is doing some work.
         status.value = Status.STATUS_BUSY
-        // Start a new worker thread, it will call the URLsRepository class to fetch the URLs.
-        thread(start = true, name = "${this.javaClass.simpleName} Thread") {
-            // Report the results from the repo to the LiveData property.
-            urls.postValue(urlsRepo.fetchPicturesURLs(getApplication()))
-            // Report that the ViewModel has finished doing work.
-            status.postValue(Status.STATUS_READY)
-        }
+        // Report the results from the repo to the LiveData property.
+        urls.value = urlsRepo.fetchPicturesURLs(getApplication())
+        // Report that the ViewModel has finished doing work.
+        status.value = Status.STATUS_READY
     }
 
     /**
