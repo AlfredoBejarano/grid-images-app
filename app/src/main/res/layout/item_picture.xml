@@ -9,6 +9,7 @@
         android:id="@+id/picture_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:roundedCornerRadius="@dimen/material_crane_theme_image_roundness"
         app:failureImage="@drawable/ic_placeholder_image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
