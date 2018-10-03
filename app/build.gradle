@@ -1,7 +1,6 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
+apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
 android {
@@ -13,6 +12,9 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    kapt {
+        generateStubs = true
     }
     buildTypes {
         release {
@@ -30,13 +32,15 @@ android {
 dependencies {
     // Common app dependencies.
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    kapt 'com.google.dagger:dagger-compiler:2.0'
-    implementation 'com.google.dagger:dagger:2.0'
     implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.android.support:design:28.0.0'
     implementation 'com.facebook.fresco:fresco:1.10.0'
     implementation 'android.arch.lifecycle:extensions:1.1.1'
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support:recyclerview-v7:28.0.0'
+    kapt 'com.google.dagger:dagger-compiler:2.15'
+    implementation 'com.google.dagger:dagger:2.15'
+    implementation 'com.google.dagger:dagger-android-support:2.15'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     // Unit Test dependencies
@@ -49,6 +53,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-core-utils'
     })
     // Instrumented Test dependencies
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
