@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">GridImages</string>
+    <string name="app_name">Images Grid</string>
     <string name="no_pictures_found">No pictures were found</string>
 </resources>
