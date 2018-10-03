@@ -49,8 +49,8 @@ class GridActivity : AppCompatActivity() {
         // Retrieve the URLsViewModel object for this activity.
         viewModel = ViewModelProviders.of(this)[URLsViewModel::class.java]
         // Assign a new layout manager to the list if it doesn't has one.
-        if (image_grid?.layoutManager != null) {
-            GridLayoutManager(this, GRID_COLUMNS_COUNT)
+        if (image_grid?.layoutManager == null) {
+            image_grid?.layoutManager = GridLayoutManager(this, GRID_COLUMNS_COUNT)
         }
         // If the cachedURLs list is not null or empty, fill the grid using it.
         if (cachedURLs?.isNotEmpty() == true) {
