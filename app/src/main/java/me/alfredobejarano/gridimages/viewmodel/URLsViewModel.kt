@@ -3,6 +3,7 @@ package me.alfredobejarano.gridimages.viewmodel
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.MutableLiveData
+import me.alfredobejarano.gridimages.DaggerAppComponent
 import me.alfredobejarano.gridimages.repository.URLsRepository
 import javax.inject.Inject
 
@@ -14,9 +15,13 @@ import javax.inject.Inject
  * @version 1.0
  * @since 02/10/2018 - 02:24 PM
  */
-class URLsViewModel @Inject constructor(
-        private val urlsRepo: URLsRepository,
-        application: Application) : AndroidViewModel(application) {
+class URLsViewModel(application: Application) : AndroidViewModel(application) {
+    /**
+     * Reference to the URLsRepository class.
+     */
+    @Inject
+    lateinit var urlsRepo: URLsRepository
+
     /**
      * Property that references the results of a URLs fetching.
      */
@@ -26,6 +31,11 @@ class URLsViewModel @Inject constructor(
      * MutableLiveData property that defines the current status of this ViewModel.
      */
     val status: MutableLiveData<Status> = MutableLiveData()
+
+    init {
+        // Inject dependencies using the App component.
+        DaggerAppComponent.create().inject(this)
+    }
 
     /**
      * Creates a worker thread to read the pictures
