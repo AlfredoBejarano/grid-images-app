@@ -1,7 +1,5 @@
 # Images Grid App
 
-![appicon](https://raw.githubusercontent.com/AlfredoBejarano/grid-images-app/develop/app/src/main/ic_launcher-web.png)
-
 ![screenshot](https://camo.githubusercontent.com/a53f0724e4af86828d2767804470b7e23c1bc298/68747470733a2f2f707265766965772e6962622e636f2f6474327659652f6465766963655f323031385f31305f30325f3230313334342e706e67)
 
 Simple android app that displays a list of images in a grid, those images
