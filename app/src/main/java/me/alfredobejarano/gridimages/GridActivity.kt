@@ -8,6 +8,7 @@ import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import android.view.View
+import com.facebook.drawee.backends.pipeline.Fresco
 import kotlinx.android.synthetic.main.activity_grid.*
 import me.alfredobejarano.gridimages.adapter.PicturesAdapter
 import me.alfredobejarano.gridimages.viewmodel.URLsViewModel
@@ -41,6 +42,10 @@ class GridActivity : AppCompatActivity() {
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Initialize fresco
+        Fresco.initialize(this)
+        // Set this activity content view.
+        setContentView(R.layout.activity_grid)
         // Retrieve the URLsViewModel object for this activity.
         viewModel = ViewModelProviders.of(this)[URLsViewModel::class.java]
         // Assign a new layout manager to the list if it doesn't has one.
